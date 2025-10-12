@@ -1,0 +1,11 @@
+[
+    {
+        "nom": "EM_540",
+        "type": "Liquide",
+        "dilution": 1.0,
+        "densite": 1.0,
+        "matiere_active": 45.0,
+        "prix_kg": 30.0,
+        "volume_ppm": 2.2222222222222223
+    }
+]

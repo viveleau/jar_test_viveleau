@@ -1,0 +1,18 @@
+{
+    "parametres_mesures": [
+        "Turbidit\u00e9",
+        "Couleur",
+        "pH",
+        "Conductivit\u00e9",
+        "MES",
+        "UV254",
+        "Aluminium r\u00e9siduel",
+        "Fer r\u00e9siduel",
+        "DCO"
+    ],
+    "parametres_selectionnes": [
+        "Turbidit\u00e9",
+        "pH",
+        "DCO"
+    ]
+}
