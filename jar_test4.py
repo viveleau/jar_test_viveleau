@@ -341,8 +341,7 @@ def calculer_volume_solution_commerciale(ppm_commercial, volume_ppm, volume_eau_
 def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volume_echantillon, 
                        temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
                        caracteristiques, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
-                       tableau_essais, debit_eau):  # Ajoutez debit_eau ici
-                           
+                       tableau_essais, debit_eau):  # Ajout de debit_eau
     """Génère un rapport HTML avec les informations actuelles et les tableaux des essais"""
     
     rapport_html = f"""
@@ -1536,3 +1535,4 @@ TABLEAUX DES ESSAIS
 if __name__ == "__main__":
 
     main()
+
