@@ -341,7 +341,8 @@ def calculer_volume_solution_commerciale(ppm_commercial, volume_ppm, volume_eau_
 def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volume_echantillon, 
                        temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
                        caracteristiques, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
-                       tableau_essais):
+                       tableau_essais, debit_eau):  # Ajoutez debit_eau ici
+                           
     """Génère un rapport HTML avec les informations actuelles et les tableaux des essais"""
     
     rapport_html = f"""
@@ -1450,7 +1451,7 @@ def main():
                     date_test, operateur, site_prelevement, type_eau, volume_echantillon,
                     temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
                     caracteristiques, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
-                    st.session_state.tableau_essais
+                    st.session_state.tableau_essais, debit_eau  # Ajoutez debit_eau ici
                 )
                 
                 st.download_button(
@@ -1533,4 +1534,5 @@ TABLEAUX DES ESSAIS
             st.info("Aucune donnée dans la base de données. Veuillez enregistrer des essais dans l'onglet 'Saisie Essais'.")
 
 if __name__ == "__main__":
+
     main()
