@@ -340,8 +340,8 @@ def calculer_volume_solution_commerciale(ppm_commercial, volume_ppm, volume_eau_
 
 def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volume_echantillon, 
                        temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
-                       caracteristiques, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
-                       tableau_essais, debit_eau):  # Ajout de debit_eau
+                       caracteristiques, meilleur_abattement, coagulants_config, floculants_config,
+                       tableau_essais, debit_eau, debit_annuel):  # Tous les paramètres nécessaires
     """Génère un rapport HTML avec les informations actuelles et les tableaux des essais"""
     
     rapport_html = f"""
@@ -446,11 +446,11 @@ def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volum
         <h2>💧 Informations de Traitement</h2>
         <table>
             <tr><th>Débit d'eau à traiter</th><td>{debit_eau:.2f} m³/h</td></tr>
-            <tr><th>Volume à traiter par jour</th><td>{debit_eau * 24:.2f} m³</td></tr>
+            <tr><th>Volume à traiter par jour</th><td>{volume_journalier:.2f} m³</td></tr>
             <tr><th>Débit annuel traité</th><td>{debit_annuel:,.2f} m³/an</td></tr>
         </table>
     </div>
-""".format(debit_eau=debit_eau, debit_annuel=debit_annuel)
+""".format(debit_eau=debit_eau, volume_journalier=debit_eau * 24, debit_annuel=debit_annuel)
     
     if meilleur_abattement is not None:
         rapport_html += f"""
@@ -1450,7 +1450,7 @@ def main():
                     date_test, operateur, site_prelevement, type_eau, volume_echantillon,
                     temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
                     caracteristiques, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
-                    st.session_state.tableau_essais, debit_eau  # Ajoutez debit_eau ici
+                    st.session_state.tableau_essais, debit_eau, debit_annuel  # Ajoutez debit_eau ici
                 )
                 
                 st.download_button(
@@ -1535,4 +1535,5 @@ TABLEAUX DES ESSAIS
 if __name__ == "__main__":
 
     main()
+
 
