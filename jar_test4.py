@@ -340,9 +340,12 @@ def calculer_volume_solution_commerciale(ppm_commercial, volume_ppm, volume_eau_
 
 def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volume_echantillon, 
                        temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
-                       caracteristiques, meilleur_abattement, coagulants_config, floculants_config,
-                       tableau_essais, debit_eau, debit_annuel):  # Tous les paramètres nécessaires
+                       caracteristiques, debit_eau, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
+                       tableau_essais):
     """Génère un rapport HTML avec les informations actuelles et les tableaux des essais"""
+    
+    # Calcul du volume journalier
+    volume_journalier = debit_eau * 24
     
     rapport_html = f"""
 <!DOCTYPE html>
@@ -439,7 +442,7 @@ def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volum
             param_name = key.replace('_entree', '').replace('_', ' ').title()
             rapport_html += f"            <tr><th>{param_name}</th><td>{value:.2f}</td></tr>\n"
     
-    rapport_html += """        </table>
+    rapport_html += f"""        </table>
     </div>
     
     <div class="section">
@@ -450,7 +453,7 @@ def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volum
             <tr><th>Débit annuel traité</th><td>{debit_annuel:,.2f} m³/an</td></tr>
         </table>
     </div>
-""".format(debit_eau=debit_eau, volume_journalier=debit_eau * 24, debit_annuel=debit_annuel)
+"""
     
     if meilleur_abattement is not None:
         rapport_html += f"""
@@ -535,6 +538,7 @@ def generer_rapport_html(date_test, operateur, site_prelevement, type_eau, volum
 """
     
     return rapport_html
+
 
 def afficher_tableaux_resultats(mesures_courantes):
     """Affiche les résultats sous forme de tableaux au lieu de graphiques"""
@@ -1449,8 +1453,8 @@ def main():
                 rapport_html = generer_rapport_html(
                     date_test, operateur, site_prelevement, type_eau, volume_echantillon,
                     temps_coagulation, vitesse_coagulation, temps_floculation, vitesse_floculation,
-                    caracteristiques, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
-                    st.session_state.tableau_essais, debit_eau, debit_annuel  # Ajoutez debit_eau ici
+                    caracteristiques, debit_eau, debit_annuel, meilleur_abattement, coagulants_config, floculants_config,
+                    st.session_state.tableau_essais
                 )
                 
                 st.download_button(
@@ -1535,5 +1539,6 @@ TABLEAUX DES ESSAIS
 if __name__ == "__main__":
 
     main()
+
 
 
