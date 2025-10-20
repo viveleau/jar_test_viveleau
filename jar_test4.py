@@ -863,7 +863,7 @@ def afficher_base_donnees():
         )
 
 def main():
-    st.markdown('<h1 class="main-header">📊 Générateur de Rapports Jar Test</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">📊 Générateur de Rapports Jar Test dévellopé par Viveleau</h1>', unsafe_allow_html=True)
     
     # Initialisation des états de session
     if 'show_config' not in st.session_state:
@@ -1358,7 +1358,7 @@ def main():
                 meilleur_abattement = mesures_courantes.loc[mesures_courantes['abattement'].idxmax()]
                 
                 # Afficher le rapport dans Streamlit
-                st.markdown("### 📋 Rapport Jar Test - Traitement des Eaux")
+                st.markdown("### 📋 Rapport Jar Test offert par https://viveleau-services.com/ - Traitement des Eaux")
                 
                 with st.container():
                     st.markdown('<div class="rapport-section">', unsafe_allow_html=True)
@@ -1522,7 +1522,7 @@ TABLEAUX DES ESSAIS
                         rapport_txt += f"{int(row['Essai'])} | {row['Coagulant_ppm_com']:.1f} | {coag_actif:.1f} | {row['Floculant_ppm_com']:.1f} | {floc_actif:.1f} | {row['DCO_entree']:.0f} | {row['DCO_sortie']:.0f} | {row['Abattement']:.1f}% | {row['V_boue']:.1f}\n"
                 
                 date_gen = datetime.now().strftime("%d/%m/%Y à %H:%M")
-                rapport_txt += f"\n---\nRapport généré automatiquement le {date_gen}"
+                rapport_txt += f"\n---\nRapport généré automatiquement par Viveleau_Jar_Test le {date_gen} - visitez notre site : https://viveleau-services.com/"
                 
                 st.download_button(
                     label="📥 Télécharger le rapport complet (TXT)",
@@ -1539,6 +1539,7 @@ TABLEAUX DES ESSAIS
 if __name__ == "__main__":
 
     main()
+
 
 
 
