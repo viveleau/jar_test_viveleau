@@ -9,7 +9,7 @@ import os
 
 # Configuration de la page
 st.set_page_config(
-    page_title="Rapport Jar Test",
+    page_title="Rapport Jar Test offert par https://viveleau-services.com/",
     page_icon="💧",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -1539,6 +1539,7 @@ TABLEAUX DES ESSAIS
 if __name__ == "__main__":
 
     main()
+
 
 
 
